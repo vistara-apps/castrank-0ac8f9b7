@@ -1,0 +1,14 @@
+{
+  "name": "CastRank",
+  "description": "CastRank is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://0ac8f9b7-8bf5-4ad6-b79d-98ab68a28f08.vistara.dev",
+  "properties": {
+    "app": {
+      "name": "CastRank",
+      "description": "CastRank is a Base Mini App built with Zara.",
+      "url": "https://0ac8f9b7-8bf5-4ad6-b79d-98ab68a28f08.vistara.dev",
+      "icon": "$NEXT_PUBLIC_URL/logo.png"
+    }
+  }
+}
