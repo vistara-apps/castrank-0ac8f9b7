@@ -51,6 +51,9 @@ export default function EngagementDashboard() {
             change={12}
             variant="positive"
             icon={<Users className="w-5 h-5" />}
+            showProgress={true}
+            progressValue={75}
+            trendData={[65, 68, 72, 75, 78, 75, 80]}
           />
           <EngagementMetric
             label="Avg Score"
@@ -58,6 +61,9 @@ export default function EngagementDashboard() {
             change={5}
             variant="positive"
             icon={<Star className="w-5 h-5" />}
+            showProgress={true}
+            progressValue={73.2}
+            trendData={[68, 70, 69, 71, 73, 72, 73.2]}
           />
           <EngagementMetric
             label="Replies"
@@ -65,6 +71,7 @@ export default function EngagementDashboard() {
             change={8}
             variant="positive"
             icon={<MessageCircle className="w-5 h-5" />}
+            trendData={[750, 780, 820, 850, 870, 880, 892]}
           />
           <EngagementMetric
             label="Recasts"
@@ -72,6 +79,7 @@ export default function EngagementDashboard() {
             change={-3}
             variant="negative"
             icon={<Repeat className="w-5 h-5" />}
+            trendData={[680, 670, 660, 650, 645, 640, 634]}
           />
         </div>
       </div>

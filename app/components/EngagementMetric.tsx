@@ -1,8 +1,9 @@
-
 'use client';
 
-import { clsx } from 'clsx';
+import { cn } from '../utils/cn';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import ProgressBar from './ProgressBar';
+import TrendChart from './TrendChart';
 
 interface EngagementMetricProps {
   label: string;
@@ -10,6 +11,11 @@ interface EngagementMetricProps {
   change?: number;
   variant?: 'positive' | 'neutral' | 'negative';
   icon?: React.ReactNode;
+  showProgress?: boolean;
+  progressValue?: number;
+  progressMax?: number;
+  trendData?: number[];
+  className?: string;
 }
 
 export default function EngagementMetric({ 
@@ -17,16 +23,21 @@ export default function EngagementMetric({
   value, 
   change, 
   variant = 'neutral',
-  icon 
+  icon,
+  showProgress = false,
+  progressValue,
+  progressMax = 100,
+  trendData,
+  className
 }: EngagementMetricProps) {
   const getVariantStyles = () => {
     switch (variant) {
       case 'positive':
-        return 'bg-green-500/10 border-green-500/20 text-green-400';
+        return 'bg-success/5 border-success/20 hover:border-success/30 hover:bg-success/10';
       case 'negative':
-        return 'bg-red-500/10 border-red-500/20 text-red-400';
+        return 'bg-error/5 border-error/20 hover:border-error/30 hover:bg-error/10';
       default:
-        return 'bg-surface border-border text-text-primary';
+        return 'bg-surface border-border hover:border-border-hover hover:bg-surface-hover';
     }
   };
 
@@ -39,31 +50,85 @@ export default function EngagementMetric({
 
   const getChangeColor = () => {
     if (change === undefined) return '';
-    if (change > 0) return 'text-green-400';
-    if (change < 0) return 'text-red-400';
+    if (change > 0) return 'text-success';
+    if (change < 0) return 'text-error';
     return 'text-text-secondary';
   };
 
+  const getProgressVariant = () => {
+    switch (variant) {
+      case 'positive':
+        return 'success';
+      case 'negative':
+        return 'warning';
+      default:
+        return 'primary';
+    }
+  };
+
+  const getTrendVariant = () => {
+    if (change === undefined) return 'primary';
+    if (change > 0) return 'success';
+    if (change < 0) return 'warning';
+    return 'primary';
+  };
+
   return (
-    <div className={clsx(
-      'p-4 rounded-lg border transition-all duration-200 hover:scale-105',
-      getVariantStyles()
+    <div className={cn(
+      'group p-lg rounded-lg border transition-all duration-250 hover:shadow-card-hover hover:scale-[1.02] cursor-pointer',
+      'focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/40',
+      getVariantStyles(),
+      className
     )}>
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-medium text-text-secondary">{label}</span>
-        {icon && <div className="text-text-secondary">{icon}</div>}
-      </div>
-      
-      <div className="flex items-end justify-between">
-        <span className="text-2xl font-bold">{value}</span>
-        
-        {change !== undefined && (
-          <div className={clsx('flex items-center space-x-1 text-xs', getChangeColor())}>
-            {getChangeIcon()}
-            <span>{Math.abs(change)}%</span>
+      <div className="flex items-center justify-between mb-md">
+        <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">
+          {label}
+        </span>
+        {icon && (
+          <div className="text-text-secondary group-hover:text-primary transition-colors duration-250">
+            {icon}
           </div>
         )}
       </div>
+      
+      <div className="flex items-end justify-between mb-sm">
+        <span className="text-3xl font-bold text-text-primary tabular-nums">
+          {value}
+        </span>
+        
+        {trendData && (
+          <TrendChart 
+            data={trendData} 
+            variant={getTrendVariant()}
+            size="sm"
+            className="opacity-60 group-hover:opacity-100 transition-opacity"
+          />
+        )}
+      </div>
+
+      {showProgress && progressValue !== undefined && (
+        <div className="mb-sm">
+          <ProgressBar
+            value={progressValue}
+            max={progressMax}
+            variant={getProgressVariant()}
+            size="sm"
+          />
+        </div>
+      )}
+      
+      {change !== undefined && (
+        <div className={cn(
+          'flex items-center space-x-1 text-xs font-medium',
+          'px-2 py-1 rounded-md bg-opacity-10',
+          getChangeColor()
+        )}>
+          {getChangeIcon()}
+          <span>
+            {change > 0 ? '+' : ''}{change}% from last period
+          </span>
+        </div>
+      )}
     </div>
   );
 }
