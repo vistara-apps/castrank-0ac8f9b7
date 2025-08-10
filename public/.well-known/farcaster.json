@@ -10,14 +10,14 @@
     "subtitle": "Built with Zara",
     "description": "CastRank is a Base Mini App built with Zara.",
     "iconUrl": "$NEXT_PUBLIC_URL/logo.png",
-    "homeUrl": "https://0ac8f9b7-8bf5-4ad6-b79d-98ab68a28f08.vistara.dev",
-    "splashImageUrl": "https://dummyimage.com/200x200/0a0b0d/ffffff.png&text=Splash",
+    "homeUrl": "https://0ac8f9b78bf54ad6b79d98ab68a28f08-1irn-l3b1yw5tn-vistara.vercel.app",
+    "splashImageUrl": "https://0ac8f9b78bf54ad6b79d98ab68a28f08-1irn-l3b1yw5tn-vistara.vercel.app/splash.png",
     "splashBackgroundColor": "#000000",
-    "heroImageUrl": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Hero",
+    "heroImageUrl": "https://0ac8f9b78bf54ad6b79d98ab68a28f08-1irn-l3b1yw5tn-vistara.vercel.app/image.png",
     "tagline": "CastRank",
     "screenshotUrls": [
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot1",
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot2"
+      "https://0ac8f9b78bf54ad6b79d98ab68a28f08-1irn-l3b1yw5tn-vistara.vercel.app/screenshot.png",
+      "https://0ac8f9b78bf54ad6b79d98ab68a28f08-1irn-l3b1yw5tn-vistara.vercel.app/screenshot.png"
     ],
     "primaryCategory": "social",
     "tags": [
@@ -25,6 +25,6 @@
       "mini app",
       "onchainkit"
     ],
-    "webhookUrl": "https://0ac8f9b7-8bf5-4ad6-b79d-98ab68a28f08.vistara.dev/api/webhook"
+    "webhookUrl": "https://0ac8f9b78bf54ad6b79d98ab68a28f08-1irn-l3b1yw5tn-vistara.vercel.app/api/webhook"
   }
 }
