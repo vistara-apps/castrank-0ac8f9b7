@@ -1,9 +1,8 @@
-
 'use client';
 
 import EngagementMetric from './EngagementMetric';
 import UserCard from './UserCard';
-import { TrendingUp, Users, MessageCircle, Repeat, Heart, Star } from 'lucide-react';
+import { TrendingUp, Users, MessageCircle, Repeat, Heart, Star, Send } from 'lucide-react';
 
 // Mock data for demonstration
 const topFans = [
