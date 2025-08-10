@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,22 +18,25 @@
   margin: 0;
 }
 
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: hsl(var(--color-bg));
-  color: hsl(var(--color-text-primary));
+  background-color: hsl(214, 20%, 10%);
+  color: hsl(0, 0%, 95%);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-variant-numeric: tabular-nums;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -42,10 +44,23 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(210, 80%, 50%);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Button focus styles */
+button:focus-visible {
+  outline: 2px solid hsl(210, 80%, 50%);
+  outline-offset: 2px;
+}
+
+/* Improved selection styles */
+::selection {
+  background-color: hsl(210, 80%, 50%, 0.3);
+  color: hsl(0, 0%, 95%);
 }
 
 /* Custom scrollbar styles */
@@ -54,14 +69,26 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--color-surface));
+  background: hsl(214, 20%, 15%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--color-border));
+  background: hsl(214, 20%, 25%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--color-text-secondary));
+  background: hsl(210, 15%, 70%);
 }
+
+/* Smooth transitions for interactive elements */
+@layer components {
+  .transition-smooth {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-bounce {
+    transition: transform 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
